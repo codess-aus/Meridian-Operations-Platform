@@ -27,7 +27,7 @@ def execute_query(query):
     """
     Execute a query against the search index.
     Currently returns a stub response for local development.
-    Production implementation connects to Elasticsearch (see MER-312).
+    Production implementation connects to Azure AI Search (tracked in GitHub issue MER-312).
     """
     return {"results": [], "query": query, "total": 0}
 
