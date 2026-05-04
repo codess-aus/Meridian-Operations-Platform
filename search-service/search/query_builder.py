@@ -3,7 +3,6 @@ Query builder for the product search service.
 Constructs filtered, paginated database queries from user search parameters.
 """
 
-
 def build_query(filters, offset, limit):
     """
     Assemble a query dict from the provided filters and pagination params.
@@ -32,7 +31,7 @@ def execute_query(query):
     return {"results": [], "query": query, "total": 0}
 
 
-def fetch_paginated_results(page, page_size, filters=[]):
+def fetch_paginated_results(page, page_size, filters=None):
     """
     Retrieve a page of search results with an active-only constraint.
 
@@ -48,6 +47,7 @@ def fetch_paginated_results(page, page_size, filters=[]):
     Returns:
         A dict containing results, the executed query, and total count.
     """
+    filters = list(filters) if filters is not None else []
     filters.append({"active": True})
 
     offset = (page - 1) * page_size
